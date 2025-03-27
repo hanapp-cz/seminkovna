@@ -2,7 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
@@ -48,10 +48,35 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
+const metropolis = localFont({
+  src: [
+    {
+      path: "../public/fonts/metropolis-light-webfont.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/metropolis-regular-webfont.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/metropolis-medium-webfont.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/metropolis-semibold-webfont.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/metropolis-bold-webfont.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  fallback: ["arial"],
 });
 
 export default async function RootLayout({
@@ -60,7 +85,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="cs" className={`${inter.variable} bg-gray-100 text-black`}>
+    <html
+      lang="cs"
+      className={`${metropolis.className} bg-gray-100 text-black`}
+    >
       <body>
         <section className="min-h-full flex flex-col pt-24">
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
