@@ -1,19 +1,16 @@
 import "./globals.css";
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
+import { toPlainText } from "next-sanity";
 import { Inter } from "next/font/google";
-import { draftMode } from "next/headers";
-import { VisualEditing, toPlainText } from "next-sanity";
-import { Toaster } from "sonner";
 
-import DraftModeToast from "@/app/components/DraftModeToast";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import * as demo from "@/sanity/lib/demo";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+
 import { handleError } from "./client-utils";
 
 /**
@@ -62,28 +59,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isEnabled: isDraftMode } = await draftMode();
-
   return (
-    <html lang="en" className={`${inter.variable} bg-white text-black`}>
+    <html lang="cs" className={`${inter.variable} bg-gray-100 text-black`}>
       <body>
-        <section className="min-h-screen pt-24">
-          {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
-          <Toaster />
-          {isDraftMode && (
-            <>
-              <DraftModeToast />
-              {/*  Enable Visual Editing, only to be rendered when Draft Mode is enabled */}
-              <VisualEditing />
-            </>
-          )}
+        <section className="min-h-full flex flex-col pt-24">
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
           <Header />
-          <main className="">{children}</main>
+          <main className="grow">{children}</main>
           <Footer />
         </section>
-        <SpeedInsights />
       </body>
     </html>
   );
