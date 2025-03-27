@@ -1,7 +1,7 @@
-import { stegaClean } from "@sanity/client/stega";
 import { Image } from "next-sanity/image";
 
 import { urlForImage } from "@/sanity/lib/utils";
+import { stegaClean } from "@sanity/client/stega";
 
 interface CoverImageProps {
   image: any;
@@ -12,22 +12,16 @@ export default function CoverImage(props: CoverImageProps) {
   const { image: source, priority } = props;
   const image = source?.asset?._ref ? (
     <Image
-      className="rounded-2xl shadow-md transition-shadow object-cover"
+      className="object-cover object-left-top"
       fill={true}
       alt={stegaClean(source?.alt) || ""}
-      src={
-        urlForImage(source)
-          ?.height(720)
-          .width(1280)
-          .auto("format")
-          .url() as string
-      }
-      sizes="100vw"
+      src={urlForImage(source)?.auto("format").url() as string}
+      sizes="320px"
       priority={priority}
     />
   ) : (
     <div className="bg-slate-50" style={{ paddingTop: "100%" }} />
   );
 
-  return <div className="relative aspect-video">{image}</div>;
+  return <div className="relative aspect-square">{image}</div>;
 }
