@@ -84,11 +84,9 @@ export default async function Page() {
       </section>
 
       <section className="px-6 py-8">
-        <div className="shadow-md p-8 bg-white container">
-          <aside className="grid gap-x-8 gap-y-10 grid-cols-[repeat(auto-fill,minmax(auto,320px))] justify-evenly">
-            <Suspense>{await AllPosts()}</Suspense>
-          </aside>
-        </div>
+        <aside className="shadow-md p-8 bg-white container">
+          <Suspense>{await AllPosts()}</Suspense>
+        </aside>
       </section>
 
       <section className="px-6 pb-8 pt-4">

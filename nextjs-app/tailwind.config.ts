@@ -30,6 +30,7 @@ export default {
         black: "#0d0e12",
         white: "#fff",
         overlay: "hsla(0, 0%, 0%, 50%)",
+        alert: "hsl(1deg 48% 34%)",
         primary: {
           light: "hsl(82deg 27% 92%)",
           medium: "hsl(75deg 19% 79%)",

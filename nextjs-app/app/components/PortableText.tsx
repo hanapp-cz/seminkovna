@@ -10,8 +10,8 @@
 
 import {
   PortableText,
-  type PortableTextComponents,
   type PortableTextBlock,
+  type PortableTextComponents,
 } from "next-sanity";
 
 import ResolvedLink from "@/app/components/ResolvedLink";
@@ -87,7 +87,10 @@ export default function CustomPortableText({
 
   return (
     <div
-      className={["prose prose-a:text-red-500", className]
+      className={[
+        "prose prose-a:text-black prose-strong:font-medium",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
     >
