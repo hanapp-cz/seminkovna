@@ -16,14 +16,15 @@ type TProps = NoChildren & {
 
 export const NavDesktop: React.FC<TProps> = ({ routes, pathname }) => {
   return (
-    <ul className="hidden lg:flex items-center gap-4 md:gap-6 leading-5 text-sm md:text-base tracking-tight font-light">
+    <ul className="hidden lg:flex items-center gap-4 md:gap-6 text-gray-600 sm md:text-base font-light">
       {routes.map(({ href, label }) => (
         <li key={href}>
           <Link
             href={href}
-            className={cn(`uppercase`, {
-              "font-normal": href === pathname,
-            })}
+            className={cn(
+              `uppercase hover:text-black hover:underline transition-all`, //
+              { "font-medium text-black": href === pathname }
+            )}
           >
             {label}
           </Link>

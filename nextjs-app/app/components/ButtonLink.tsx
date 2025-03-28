@@ -16,13 +16,16 @@ export const ButtonLink: React.FC<TProps> = ({
   ...props
 }) => {
   const colorTheme =
-    variant === "light" ? `bg-white text-black` : `bg-black/65 text-white`;
+    variant === "light"
+      ? `bg-white text-black/80 hover:bg-gray-200`
+      : `bg-black/65 text-white hover:bg-black/75`;
 
   return (
     <Link
       {...props}
       className={cn(
         colorTheme,
+        `transition-colors`,
         `uppercase text-2xl font-light`,
         `py-4 px-8 min-w-64 flex items-center justify-center`,
         className
