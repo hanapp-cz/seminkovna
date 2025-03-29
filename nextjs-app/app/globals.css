@@ -6,6 +6,7 @@ html,
 body {
   height: 100%;
   line-height: 1.5;
+  text-wrap: pretty;
 }
 
 a {
@@ -19,4 +20,13 @@ address {
 
 [data-slot="drawer-overlay"] {
   background-color: hsl(0 0% 0% / 50%);
+}
+
+strong {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
 }

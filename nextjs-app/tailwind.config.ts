@@ -1,6 +1,7 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import { PluginAPI } from 'tailwindcss/types/config';
 
-import typography from "@tailwindcss/typography";
+import typography from '@tailwindcss/typography';
 
 export default {
   content: ["./app/**/*.{ts,tsx}", "./sanity/**/*.{ts,tsx}"],
@@ -20,7 +21,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        pattern: "var(--bg-pattern-primary)",
+        pattern: "url(../public/images/bg-pattern.jpg)",
       },
       boxShadow: {
         layer: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
@@ -48,5 +49,16 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [typography, require(`tailwindcss-animate`)],
+  plugins: [
+    typography,
+    require(`tailwindcss-animate`),
+    ({ addUtilities }: PluginAPI) => {
+      addUtilities({
+        ".page-content": {
+          "@apply container max-w-4xl xl:max-w-5xl flex flex-col gap-4 lg:gap-8":
+            {},
+        },
+      });
+    },
+  ],
 } satisfies Config;

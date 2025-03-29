@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 type TProps = RequiredChildren &
   PropsOf<typeof Link> & {

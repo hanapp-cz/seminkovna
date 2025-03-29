@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import DateComponent from "@/app/components/Date";
 import OnBoarding from "@/app/components/Onboarding";
+import { ROUTES } from "@/config/routes";
 import { Post as PostType } from "@/sanity.types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { allPostsQuery, morePostsQuery } from "@/sanity/lib/queries";
@@ -19,13 +20,17 @@ const Post: React.FC<TProps> = ({ post }) => {
     <article key={_id} className="flex flex-col gap-y-4 max-w-80 text-center">
       <CoverImage image={coverImage} />
       <h3 className="text-2xl font-medium">
-        <Link className="hover:underline uppercase" href={`/posts/${slug}`}>
+        <Link
+          className="hover:underline uppercase"
+          href={`${ROUTES.news.href}/${slug}`}
+        >
           {title}
         </Link>
       </h3>
-      <div className="text-gray-400 italic text-sm">
-        <DateComponent dateString={date} />
-      </div>
+      <DateComponent
+        dateString={date}
+        className="text-gray-400 italic text-sm"
+      />
       <p className="line-clamp-4 text-lg leading-6 text-gray-600">{excerpt}</p>
     </article>
   );
@@ -42,14 +47,14 @@ const Posts = ({
 }) => (
   <div>
     {heading && (
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 className="text-2xl font-medium tracking-tight text-gray-900 md:text-3xl uppercase mb-8 lg:mb-12">
         {heading}
       </h2>
     )}
     {subHeading && (
       <p className="mt-2 text-lg leading-8 text-gray-600">{subHeading}</p>
     )}
-    <div className="mt-6 pt-6 space-y-12 border-t border-gray-200">
+    <div className="grid gap-x-8 gap-y-10 grid-cols-[repeat(auto-fill,minmax(auto,320px))] justify-evenly">
       {children}
     </div>
   </div>
@@ -72,7 +77,7 @@ export const MorePosts = async ({
   }
 
   return (
-    <Posts heading={`Recent Posts (${data?.length})`}>
+    <Posts heading={`Další události (${data?.length})`}>
       {data?.map((post: any) => <Post key={post._id} post={post} />)}
     </Posts>
   );
@@ -86,10 +91,10 @@ export const AllPosts = async () => {
   }
 
   return (
-    <>
+    <Posts>
       {data.map((post: any) => (
         <Post key={post._id} post={post} />
       ))}
-    </>
+    </Posts>
   );
 };
