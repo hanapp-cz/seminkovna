@@ -22,6 +22,7 @@ export default {
     extend: {
       backgroundImage: {
         pattern: "url(../public/images/bg-pattern.jpg)",
+        decorative: "url(../public/images/bg-seeds.png)",
       },
       boxShadow: {
         layer: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
@@ -57,6 +58,9 @@ export default {
         ".page-content": {
           "@apply container max-w-4xl xl:max-w-5xl flex flex-col gap-4 lg:gap-8":
             {},
+        },
+        ".heading-shadow": {
+          "text-shadow": "1px 1px 8px hsl(0deg 0% 100%)",
         },
       });
     },

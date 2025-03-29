@@ -5,25 +5,27 @@ import { cn } from '@/utils/cn';
 import { ButtonLink } from '../components/ButtonLink';
 
 const FORMS_LINK = "https://forms.gle/gBA99tzbYfPQcoPv6";
-const TERMS_ID = "terms";
+const TERMS_ID = "pravidla";
 
 export default async function Page() {
   return (
     <div className="grid">
-      <header
-        className={cn(
-          `container max-w-3xl py-12 min-h-64`,
-          `lg:min-h-80 lg:max-w-full`,
-          `flex justify-center items-center`,
-          `text-center`
-        )}
-      >
-        <h1 className="uppercase text-2xl md:text-3xl lg:text-5xl tracking-tight leading-loose text-gray-900 font-medium">
-          Pravidla + Jak mohu semínka získat
-        </h1>
+      <header className={cn(`bg-decorative bg-cover bg-bottom shadow-lg`)}>
+        <div
+          className={cn(
+            `container max-w-3xl py-12 min-h-64`,
+            `lg:min-h-80 lg:max-w-full`,
+            `flex justify-center items-center`,
+            `text-center `
+          )}
+        >
+          <h1 className="uppercase text-2xl md:text-3xl lg:text-5xl tracking-tight leading-loose text-gray-900 font-medium heading-shadow">
+            Pravidla + Jak mohu semínka získat
+          </h1>
+        </div>
       </header>
       <main className="leading-relaxed lg:text-lg">
-        <section className="bg-pattern py-8 lg:py-12">
+        <section className="bg-pattern py-8 lg:py-12" id={TERMS_ID}>
           <div className="page-content">
             <h2 className="lg:text-3xl">
               Jak funguje Semínkovna ve Vyškově a proč má svá pravidla?
@@ -52,9 +54,7 @@ export default async function Page() {
               </li>
             </ol>
 
-            <h2 className="uppercase text-2xl lg:text-3xl" id={TERMS_ID}>
-              Pravidla
-            </h2>
+            <h2 className="uppercase text-2xl lg:text-3xl">Pravidla</h2>
             <p>
               Odběr semínek není nikterak zpoplatněn, pěstitel se však{" "}
               <strong>zavazuje</strong>, že se upřímně pokusí zvolená semínka
@@ -185,7 +185,10 @@ export default async function Page() {
                 zahrnuje čas vynaložený na přípravu a zabalení balíčku.
               </p>
               <Link href="https://www.nakrmdusi.cz/zelenina/seminkovna/">
-                Odkaz zde: https://www.nakrmdusi.cz/zelenina/seminkovna/
+                Odkaz zde:{" "}
+                <span className="underline">
+                  https://www.nakrmdusi.cz/zelenina/seminkovna/
+                </span>
               </Link>
             </div>
           </div>
